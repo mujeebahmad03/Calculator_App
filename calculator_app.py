@@ -20,7 +20,7 @@ class Calculator:
         self.root = root
         self.root.title('Calculator')
         self.root.bind('<KeyPress>', self.key_pressed)
-        self.text = tk.Text(root, width=50, height=5, font=('Arial', 16))
+        self.text = tk.Text(self.root, width=50, height=5, font=('Arial', 16))
         self.text.grid(row=0, column=0, columnspan=7)
         self.memory = 0
         
@@ -215,7 +215,7 @@ class Calculator:
         key = event.char
         symbol = event.keysym
 
-        if key and key in '1234567890':
+        if symbol and symbol in '1234567890':
             self.handle_button_click(key)
         elif key and key in '+-/*()%':
             self.handle_button_click(key)
