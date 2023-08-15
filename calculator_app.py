@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import math
-import numpy as np
+from numpy import cbrt
 from functools import partial
 from decimal import Decimal
 
@@ -186,7 +186,7 @@ class Calculator:
             elif text == '√':
                 self.perform_unary_operation(math.sqrt, 'unary')
             elif text == '3√':
-                self.perform_unary_operation(lambda x: np.cbrt(x), 'unary')
+                self.perform_unary_operation(lambda x: cbrt(x), 'unary')
             elif text == '^2':
                 self.perform_unary_operation(lambda x: x ** 2, 'unary')
             elif text == '^3':
