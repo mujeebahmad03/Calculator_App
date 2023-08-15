@@ -101,7 +101,8 @@ class Calculator:
         """
         Display an error message in the text area.
         """
-        self.update_text(f'Error, {message}')
+        self.update_text('Error')
+        print(f'Error{message}')
 
     @log_function_call
     def perform_unary_operation(self, operation, input_type):
@@ -114,6 +115,8 @@ class Calculator:
                 if operation == math.sqrt and value < 0:
                     self.error_handler('Not a number')
                     return
+                elif operation == (lambda x: 1 / x) and value == 0:
+                    self.error_handler('Division by zero') 
             if input_type == 'integer':
                 value = int(self.text.get(1.0, tk.END))
             result = operation(value)
@@ -121,7 +124,7 @@ class Calculator:
         except (SyntaxError, ValueError):
             self.update_text('Invalid Input')
         except Exception as error:
-            self.error_handler(str(error))
+            self.error_handler('Error')
 
     @log_function_call
     def handle_memory(self, text):
